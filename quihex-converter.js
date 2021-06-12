@@ -52,7 +52,11 @@ function readNote(path) {
   const content = readJSON(path + '/content.json');
   // console.log(content);
   const meta = readJSON(path + '/meta.json');
-  // console.log(meta);
+
+  if (meta.tags.indexOf("draft") !== -1) {
+    return
+  }
+
   const note = {
     uuid: meta.uuid,
     title: meta.title.replace(/:/g, ' ') || 'no title',
@@ -81,6 +85,7 @@ function readNote(path) {
   }
   console.log(note)
   writeMd(note);
+  writeRes(path);
 }
 
 function writeMd(note) {
@@ -120,7 +125,6 @@ function start() {
       // console.log(notePath);
       // ディレクトリのみ処理される
       readNote(notePath);
-      writeRes(notePath);
     }
   });
 }
