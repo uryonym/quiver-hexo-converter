@@ -20,7 +20,7 @@
   "dependencies": {
     "moment": "^2.20.0",
     "rimraf": "^2.6.2",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "turndown": "^4.0.0"
   }
 }
